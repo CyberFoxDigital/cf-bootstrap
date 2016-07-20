@@ -1,0 +1,224 @@
+@function pow($base, $exponents) {
+  $raised: 1;
+
+  @for $i from 1 through $exponents {
+    $raised: $raised * $base;
+  }
+
+  @return $raised;
+}
+
+html {
+	font-size: $font-size-base;
+}
+
+h1,.h1 {
+	@include font-size( round( $font-size-base * pow( $type-scale, 5 ) ) );
+  @media (min-width: $screen-md-min) {
+    @include font-size( round( $font-size-base * pow( $md-type-scale, 5 ) ) );
+  }
+} 
+ 
+h2,.h2 { 
+	@include font-size( round( $font-size-base * pow( $type-scale, 4 ) ) );
+  @media (min-width: $screen-md-min) {
+    @include font-size( round( $font-size-base * pow( $md-type-scale, 4 ) ) );
+  }
+} 
+ 
+h3,.h3 { 
+	@include font-size( round( $font-size-base * pow( $type-scale, 3 ) ) );
+  @media (min-width: $screen-md-min) {
+    @include font-size( round( $font-size-base * pow( $md-type-scale, 3 ) ) );
+  }
+} 
+ 
+h4,.h4 { 
+	@include font-size( round( $font-size-base * pow( $type-scale, 2 ) ) );
+  @media (min-width: $screen-md-min) {
+    @include font-size( round( $font-size-base * pow( $md-type-scale, 2 ) ) );
+  }
+} 
+ 
+h5,.h5 { 
+	@include font-size( round( $font-size-base * pow( $type-scale, 1 ) ) );
+  @media (min-width: $screen-md-min) {
+    @include font-size( round( $font-size-base * pow( $md-type-scale, 1 ) ) );
+  }
+}
+
+header + .container {
+	background: #fff;
+}
+
+.breadcrumb a {
+	@include a($text-color);
+}
+
+//From opencart's CSS (so young)
+
+a:hover {
+  text-decoration: none;
+}
+legend {
+  font-size: 18px;
+  padding: 7px 0px
+}
+.input-group .input-group-addon {
+  font-size: 12px;
+  height: 30px;
+}
+/* Fix some bootstrap issues */
+span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
+  display: inline;
+}
+
+.nav-tabs {
+  margin-bottom: 15px;
+}
+div.required .control-label:before {
+  content: '* ';
+  color: #F00;
+  font-weight: bold;
+}
+
+//colors
+.breadcrumb {
+  margin: 0 0 20px 0;
+  padding: 8px 0;
+  border: 1px solid darken($body-bg, 12%);
+  i {
+    font-size: 15px;
+  }
+  > li {
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 0 1px 0 $white;
+    padding: 0 20px;
+    position: relative;
+    white-space: nowrap;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -3px;
+      right: -5px;
+      width: 26px;
+      height: 26px;
+      border-right: 1px solid darken($body-bg, 12%);
+      border-bottom: 1px solid darken($body-bg, 12%);
+      //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+      transform: rotate(-45deg);
+    }
+    + li:before {
+      content: '';
+      padding: 0;
+    }
+  }
+}
+.pagination {
+  margin: 0;
+}
+
+
+.thumbnails {
+  overflow: auto;
+  clear: both;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: -20px;
+  > li {
+    margin-left: 20px;
+  }
+  > img {
+    width: 100%;
+  }
+  .image-additional {
+    float: left;
+    margin-left: 20px;
+  }
+}
+.image-additional {
+  max-width: 78px;
+  a {
+    margin-bottom: 20px;
+    padding: 5px;
+    display: block;
+    border: 1px solid darken($body-bg,12%);
+  }
+}
+@media(min-width: 1200px) {
+  #content {
+    .col-lg-2:nth-child(6n + 1) {
+      clear: left;
+      clear: left;
+    }
+    .col-lg-3:nth-child(4n + 1) {
+      clear: left;
+    }
+    .col-lg-4:nth-child(3n + 1) {
+      clear: left;
+    }
+    .col-lg-6:nth-child(2n + 1) {
+      clear: left;
+    }
+  }
+}
+@media(min-width: 992px) and(max-width: 1199px) {
+  #content {
+    .col-md-2:nth-child(6n + 1) {
+      clear: left;
+      clear: left;
+    }
+    .col-md-3:nth-child(4n + 1) {
+      clear: left;
+    }
+    .col-md-4:nth-child(3n + 1) {
+      clear: left;
+    }
+    .col-md-6:nth-child(2n + 1) {
+      clear: left;
+    }
+  }
+}
+@media(min-width: 768px) and(max-width: 991px) {
+  #content {
+    .col-sm-2:nth-child(6n + 1) {
+      clear: left;
+      clear: left;
+    }
+    .col-sm-3:nth-child(4n + 1) {
+      clear: left;
+    }
+    .col-sm-4:nth-child(3n + 1) {
+      clear: left;
+    }
+    .col-sm-6:nth-child(2n + 1) {
+      clear: left;
+    }
+  }
+}
+@media(min-width: 768px) {
+  #column-left {
+    .product-layout .col-md-3 {
+      width: 100%;
+    }
+    + #content {
+      .product-layout .col-md-3 {
+        width: 50%;
+      }
+      + #column-right .product-layout .col-md-3 {
+        width: 100%;
+      }
+    }
+  }
+  #content + #column-right .product-layout .col-md-3 {
+    width: 100%;
+  }
+}
+#column-left .product-layout {
+  width: 100%;
+}
+#column-right .product-layout {
+  width: 100%;
+}

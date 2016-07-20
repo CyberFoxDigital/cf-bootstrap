@@ -1,0 +1,82 @@
+img { max-width: 100%; }
+
+img[style*="float: right"],
+img[style*="float:right"],
+.alignright {
+	margin-left: 30px;
+	float:right;
+}
+
+img[style*="float: left"],
+img[style*="float:left"],
+.alignleft {
+	margin-right: 30px;
+	float:left;
+}
+
+.dl-horizontal.dl-icon {
+	@media (min-width: $screen-sm-min) { 
+		dt {
+			width: 1em;
+		}
+		dd {
+			margin-left: 1em;
+			padding-left:floor($grid-gutter-width / 2);
+		}
+	}
+}
+
+@media (min-width: $screen-sm-min) { 
+	.sm-text-right {
+		text-align:right;
+	}
+	.sm-text-left {
+		text-align:left;
+	}
+	.sm-text-center {
+		text-align:center;
+	}
+	.sm-pull-right {
+		float: right !important;
+	}
+	.sm-pull-left {
+		float: left !important;
+	}
+}
+
+
+@media (min-width: $screen-md-min) { 
+	.md-text-right {
+		text-align:right; 
+	}
+	.md-text-left {
+		text-align:left;
+	}
+	.md-text-center {
+		text-align:center;
+	}
+	.md-pull-right {
+		float: right !important;
+	}
+	.md-pull-left {
+		float: left !important;
+	}
+}
+
+@media (min-width: $screen-lg-min) { 
+	.lg-text-right {
+		text-align:right;
+	}
+	.lg-text-left {
+		text-align:left;
+	}
+	.lg-text-center {
+		text-align:center;
+	}
+	.lg-pull-right {
+		float: right !important;
+	}
+	.lg-pull-left {
+		float: left !important;
+	}
+}

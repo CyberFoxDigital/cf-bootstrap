@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/main.js",
+        "scripts/common.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    },
+    "editor-style.css": {
+      "files": [
+        "styles/editor-style.scss"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    },
+    "font-awesome.css": {
+      "bower": ["font-awesome"],
+      "files": [
+        "css/font-awesome.css"
+      ],
+      "main" : true
+    },
+    "slideout.js": {
+      "bower": ["slideout.js"],
+      "files": [
+        "dist/slideout.js"
+      ],
+      "main" : true
+    },
+    "lazysizes.js": {
+      "bower": ["lazysizes.js"],
+      "files": [
+        "lazysizes.js"
+      ],
+      "main" : true
+    }
+  },
+  "config": {
+    "devUrl": "http://qwikfast.co.uk.192-168-1-7.media-orb.co.uk"
+  }
+}

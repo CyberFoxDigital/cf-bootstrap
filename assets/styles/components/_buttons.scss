@@ -1,0 +1,55 @@
+.btn .fa {
+  color: inherit;
+}
+
+.btn-circle {
+	height: $line-height-computed + (2 * $padding-base-vertical) + 2px;
+	width: $line-height-computed + (2 * $padding-base-vertical) + 2px;
+	text-align:center;
+	border-radius: 50%;
+	&.btn-lg {
+		height: ($line-height-large * $font-size-large) + (2 * $padding-large-vertical) + 2px;
+		width: ($line-height-large * $font-size-large)  + (2 * $padding-large-vertical) + 2px;
+	}
+	&.btn-sm {
+		height: ($line-height-small * $font-size-small)  + (2 * $padding-small-vertical) + 2px;
+		width: ($line-height-small * $font-size-small)  + (2 * $padding-small-vertical) + 2px;
+	
+	}
+	&.btn-xs {
+		height: ($line-height-small * $font-size-small) + (2 * $padding-xs-vertical) + 2px;
+		width: ($line-height-small * $font-size-small) + (2 * $padding-xs-vertical) + 2px;
+	}
+}
+
+.btn {
+	text-transform: uppercase;
+	font-weight: bold;	
+}
+
+
+
+.btn-inverse {
+  @include button-variant( $body-bg, $text-color, darken($text-color, 10% ) );
+}
+
+
+.btn-facebook {
+  @include button-variant( $color-facebook-alt, $color-facebook, darken( $color-facebook, 10% ) );
+}
+
+.btn-twitter {
+  @include button-variant( $color-twitter-alt, $color-twitter, darken( $color-twitter, 10% ) );
+}
+
+.btn-linkedin {
+  @include button-variant( $color-linkedin-alt, $color-linkedin, darken( $color-linkedin, 10% ) );
+}
+
+.btn-google-plus {
+	@include button-variant( $color-google-plus-alt, $color-google-plus, darken($color-google-plus, 10%) );
+}
+
+.btn-youtube {
+  @include button-variant( $color-youtube-alt, $color-youtube, darken($color-youtube, 10%) );
+}

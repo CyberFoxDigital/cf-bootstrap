@@ -1,0 +1,65 @@
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+$font-family-sans-serif:"proxima-nova", sans-serif;
+$headings-font-family: 	"bebas-neue", sans-serif;
+
+// Colors
+$brand-primary:         #FEE100;
+$brand-black: 					#191919;
+$brand-gray: 						#ccc;
+$brand-white:						#ffffff;
+$brand-danger: 					#dd1b1b;
+
+$white:									#ffffff;
+$color-facebook: 				#3b5998;
+$color-facebook-alt: 		#ffffff;
+$color-twitter: 				#00aced;
+$color-twitter-alt: 		#ffffff;
+$color-google-plus: 		#dd4b39;
+$color-google-plus-alt: #ffffff;
+$color-youtube: 				#bb0000;
+$color-youtube-alt: 		#ffffff;
+$color-linkedin: 				#007bb6;
+$color-linkedin-alt: 		#ffffff;
+$color-instragram: 			#517fa4;
+$color-instragram-alt: 	#ffffff;
+$color-pinterest: 			#cb2027;
+$color-google-plus-alt: #ffffff;
+
+$black_10: transparentize($brand-black, 0.90);
+$black_20: transparentize($brand-black, 0.80);
+$black_25: transparentize($brand-black, 0.75);
+$black_50: transparentize($brand-black, 0.50);
+$black_75: transparentize($brand-black, 0.25);
+$black_90: transparentize($brand-black, 0.10);
+
+$body-bg: 							$brand-gray;
+$link-color: 						$brand-black;
+$navbar-inverse-bg: 				lighten($brand-black, 10%);
+$navbar-inverse-border: 		lighten($brand-black, 10%);
+$navbar-inverse-link-color: $brand-white;
+
+$btn-primary-color: 		$brand-black;
+$text-color: 						$brand-black;
+$type-scale: 						1.212;
+$md-type-scale: 				1.212;
+$font-size-base:				16px;
+$font-size-large: 			16px; 
+$line-height-base:      1.5;
+$line-height-computed:  floor(($font-size-base * $line-height-base));
+
+$list-group-active-color:  $text-color;
+$list-group-active-text-color: $text-color;
+$nav-link-hover-bg: $brand-black; 
+$nav-tabs-border-color: $brand-black; 
+$nav-tabs-link-hover-border-color: $brand-black;
+$nav-tabs-active-link-hover-bg: $brand-black;
+$nav-tabs-active-link-hover-color: #fff;
+$nav-tabs-active-link-hover-border-color: $brand-black;
+
+$thumbnail-bg: 					#fff;

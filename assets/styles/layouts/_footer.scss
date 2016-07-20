@@ -1,0 +1,31 @@
+footer {
+	@extend .swatch-dark;
+	padding-top: $line-height-computed;
+	h5 {
+		@extend .h3;
+		text-align: center;
+	}
+	hr {
+		border-top: none;
+		border-bottom: 1px solid $text-color;
+	}
+	
+	ul.list-styled {
+		margin-left: 0;
+		list-style: none;
+		li {
+			margin-bottom: $line-height-computed / 2;
+			&:before {    
+				font-family: 'FontAwesome';
+				content: '\f105';
+				margin:0 5px 0 -15px;
+				color: $brand-primary;
+			}
+		}
+	}
+	.bottom {
+		margin-top:  $line-height-computed;
+		padding: ($line-height-computed / 2)  0;
+		background-color: lighten($brand-black, 10%);
+	}
+}

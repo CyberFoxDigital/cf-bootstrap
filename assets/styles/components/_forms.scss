@@ -1,0 +1,20 @@
+.alert {
+	padding: 8px 14px 8px 14px;
+}
+
+.buttons {
+	margin: 1em 0;
+}
+
+
+
+/* fixed mobile cart quantity input */
+.input-group .form-control[name^=quantity] {
+	min-width: 50px;
+}
+
+/* Missing focus and border color to overwrite bootstrap */
+.btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
+    background-image: none;
+    background-color: #df5c39;
+}
