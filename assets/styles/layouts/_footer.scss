@@ -1,5 +1,4 @@
 footer {
-	@extend .swatch-dark;
 	padding-top: $line-height-computed;
 	h5 {
 		@extend .h3;
@@ -26,6 +25,5 @@ footer {
 	.bottom {
 		margin-top:  $line-height-computed;
 		padding: ($line-height-computed / 2)  0;
-		background-color: lighten($brand-black, 10%);
 	}
 }

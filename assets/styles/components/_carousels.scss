@@ -17,10 +17,6 @@
 		box-shadow: none;
 		border-radius: 0;
 	}
-	&[id*="banner"] .owl-wrapper-outer,
-	&[id*="slideshow"] .owl-wrapper-outer {
-		border: 1px solid $brand-black;
-	}
 	.owl-next,
 	.owl-prev {
 		@extend .btn;

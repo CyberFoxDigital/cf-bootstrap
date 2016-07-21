@@ -1,48 +1,7 @@
 .module {
-	@include panel-variant($navbar-inverse-bg, $navbar-inverse-link-color, $navbar-inverse-bg, $navbar-inverse-bg);
+	//@include panel-variant($navbar-inverse-bg, $navbar-inverse-link-color, $navbar-inverse-bg, $navbar-inverse-bg);
 	.panel-heading h4 {
 		@extend .panel-title;
-		font-size: 24px;
 		text-align: center;
 	}
 } 
-
-.postcode-lookup {
-	background: $brand-danger;
-	background: -moz-linear-gradient(top,  $brand-danger 0%, darken($brand-danger, 6%) 100%);
-	background: -webkit-linear-gradient(top,  $brand-danger 0%,darken($brand-danger, 6%) 100%);
-	background: linear-gradient(to bottom,  $brand-danger 0%,darken($brand-danger, 6%) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$brand-danger', endColorstr='darken($brand-danger, 6%)',GradientType=0 );
-	padding: 6px 15px;
-	color: #fff;
-	margin-bottom: $line-height-computed;
-	b {
-		@extend .h4;
-		margin: 0;
-    line-height: 34px;
-    vertical-align: middle;
-	}
-	.form-control,
-	.btn {
-		background: none;
-		color: #fff;
-		border: 1px solid #fff;
-		box-shadow: none;
-		border-radius: 6px;
-		&::-webkit-input-placeholder {
-   		color: #fff;
-		}
-		
-		&:-moz-placeholder { /* Firefox 18- */
-			 color: #fff;  
-		}
-		
-		&::-moz-placeholder {  /* Firefox 19+ */
-			 color: #fff;  
-		}
-		
-		&:-ms-input-placeholder {  
-			 color: #fff;  
-		}
-	}
-}

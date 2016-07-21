@@ -1,4 +1,4 @@
-<div class="module panel <?php echo basename(__FILE__, '.tpl') ?>">
+<div class="module panel panel-default <?php echo basename(__FILE__, '.tpl') ?>">
 <?php 
 ob_start(); 
 include(modification('catalog/view/theme/default/template/module/' . basename(__FILE__)));

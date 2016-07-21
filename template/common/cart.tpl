@@ -1,5 +1,5 @@
-<div id="cart" class="btn-groupbtn-block">
-  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total"><?php echo $text_items; ?></span></button>
+<div id="cart" class="dropdown">
+  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-link dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span <?php if(preg_match('/\(0\)/', $text_items) !== false) echo 'class="empty-cart"'; ?> id="cart-total"><?php echo preg_replace('/(\d+)\s.*?\-\s(.*)/', '$2 <span class="badge">$1</span>', $text_items) ; ?></span></button>
   <ul class="dropdown-menu pull-right">
     <?php if ($products || $vouchers) { ?>
     <li>

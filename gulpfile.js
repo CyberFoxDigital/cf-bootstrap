@@ -276,7 +276,7 @@ gulp.task('watch', function() {
     files: ['template/**/*.tpl'],
     proxy: config.devUrl,
     ui: false,
-    port: 3006,
+    port: 3000,
     open:false,
     snippetOptions: {
       blacklist: ['/admin/**']

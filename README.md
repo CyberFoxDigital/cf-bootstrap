@@ -21,7 +21,11 @@ npm install -g jpegtran
 npm install -g jpegtran-bin
 ```
 
-Finally, edit the devUrl variable in assets/manifest.json to your website. You can now run the following command edit the SCSS and JS files and compile the changes in real-time:
+Finally, edit the devUrl variable in assets/manifest.json to your website. 
+
+Making your theme
+-----------------
+If you followed the steps above you should now be able to run the following command to edit the SCSS and JS files and compile the changes in real-time:
 
 ```sh
 gulp watch

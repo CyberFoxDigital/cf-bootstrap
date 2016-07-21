@@ -29,102 +29,106 @@
   <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
   <?php } ?>
   <?php foreach ($scripts as $script) { ?>
-  <script src="<?php echo $script; ?>" type="text/javascript"></script>
+  <script defer src="<?php echo $script; ?>" type="text/javascript"></script>
   <?php } ?>
   <?php foreach ($analytics as $analytic) { ?>
   <?php echo $analytic; ?>
   <?php } ?>
-	<script src="https://use.typekit.net/zyb2kaf.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body class="<?php echo $class; ?>">
-<nav id="top" class="visible-xs">
-  <div class="container">
-    <?php echo $currency; ?>
-    <?php echo $language; ?>
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></li>
-        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <?php if ($logged) { ?>
-            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-            <?php } else { ?>
-            <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-            <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
-            <?php } ?>
-          </ul>
-        </li>
-        <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
-        <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
-        <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <header>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-md-3">
-        <div id="logo">
-          <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-          <?php } else { ?>
-          <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-          <?php } ?>
+  <nav id="top" class="navbar-default">
+    <div class="container">
+    	<div id="currency-language" class="nav pull-left">
+        <ul class="list-inline">
+        <?php echo $currency; ?>
+        <?php echo $language; ?>
+        </ul>
+      </div>
+      <div id="top-links" class="nav pull-right">
+        <ul class="list-inline">
+          <li><a class="btn btn-sm btn-link" href="<?php echo $contact; ?>"><i class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></a></li>
+          <li class="dropdown"><a class="btn btn-sm btn-link" href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_account; ?></span> <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <?php if ($logged) { ?>
+              <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+              <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+              <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+              <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+              <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+              <?php } else { ?>
+              <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
+              <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
+              <?php } ?>
+            </ul>
+          </li>
+          <li><a class="btn btn-sm btn-link" href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
+          <li><a class="btn btn-sm btn-link" href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
+          <li><a class="btn btn-sm btn-link" href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="middle-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="logo-wrapper col-sm-4 col-md-3">
+          <div id="logo">
+            <?php if ($logo) { ?>
+            <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+            <?php } else { ?>
+            <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="search-wrapper col-sm-5 col-md-4 col-md-offset-1 text-center">
+          <?php echo $search; ?>
+        </div>
+        <div class="cart-wrapper col-sm-3 col-md-offset-1 text-center">
+          <?php echo $cart; ?>
         </div>
       </div>
-      <div class="col-sm-5 col-md-4 col-md-offset-1 text-center">
-				<p>
-					<i class="fa fa-phone"></i> Give us a call: <b>01305 2634444</b>
-				</p>
-				<?php echo $search; ?>
-      </div>
-      <div class="col-sm-3 col-md-offset-1 text-center">
-				<ul class="list-inline">
-					<li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
-         	<li><i class="fa fa-user"></i> <a href="<?php echo $register; ?>"><?php echo $text_register; ?></a> / <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>
-				</ul>
-				<?php echo $cart; ?>
-			</div>
     </div>
   </div>
 	<?php if ($categories) { ?>
 	<div class="nav-wrapper">
-		<nav id="menu" class="navbar navbar-inverse">
-			<div class="container">
-				<div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-					<button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-				</div>
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<ul class="nav navbar-nav">
-						<?php foreach ($categories as $category) { ?>
-						<?php if ($category['children']) { ?>
-						<li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-							<div class="dropdown-menu">
-								<div class="dropdown-inner">
-									<?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-									<ul class="list-unstyled">
-										<?php foreach ($children as $child) { ?>
-										<li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-										<?php } ?>
-									</ul>
-									<?php } ?>
-								</div>
-								<a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-						</li>
-						<?php } else { ?>
-						<li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-						<?php } ?>
-						<?php } ?>
-					</ul>
-				</div>
-			</div>
-		</nav>
+  	<div class="container">
+      <nav id="menu" class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          	<div class="navbar-brand visible-xs">
+            	<?php echo $text_category; ?>
+            </div>
+            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+          </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+              <?php foreach ($categories as $category) { ?>
+              <?php if ($category['children']) { ?>
+              <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?> <span class="caret"></span></a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-inner<?php echo $category['column'] > 1 ? ' has-columns' : ' no-columns'?>">
+                    <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                    <ul class="nav">
+                      <?php foreach ($children as $child) { ?>
+                      <?php $child['name'] = preg_replace('/\((.*?)\)/s', '<span class="badge">$1</span>', $child['name']); ?>
+                      <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                      <?php } ?>
+                    </ul>
+                    <?php } ?> 
+                  </div>
+                  <a href="<?php echo $category['href']; ?>" class="see-all btn btn-primary btn-block"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
+                </div>
+              </li>
+              <?php } else { ?>
+              <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+              <?php } ?>
+              <?php } ?>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 	</div>
 	<?php } ?>
 </header>

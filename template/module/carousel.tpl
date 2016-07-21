@@ -1,10 +1,10 @@
-<div class="module panel <?php echo basename(__FILE__, '.tpl') ?>">
+<div class="module panel panel-default <?php echo basename(__FILE__, '.tpl') ?>">
 <?php 
 ob_start(); 
 include(modification('catalog/view/theme/default/template/module/' . basename(__FILE__)));
 $module = ob_get_contents(); 
 ob_end_clean();
-//Heading edit - sorry!
+//Heading edit - Gahd... forgive me!
 $module = '<h3>Shop by Brand</h3>' . $module;
 //Wrap Header
 if(preg_match('/<h3(.*?)<\/h3>/', $module) !== false){

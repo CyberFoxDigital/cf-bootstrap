@@ -1,15 +1,15 @@
 {  
-   "name":"oc-bootstrap",
-   "version":"2.0.0",
-   "author":"Adam Lanning-Molyneux<adam@mediaorb.co.uk>",
-   "homepage":"http://mediaorb.co.uk",
+   "name":"cf-openacrt",
+   "version":"0.1.0",
+   "author":"Adam Lanning-Molyneux<adam@cyberfoxdigital.co.uk>",
+   "homepage":"http://cyberfoxdigital.co.uk",
    "private":true,
    "repository":{  
       "type":"git",
-      "url":"git://github.com:mediaorb/mo-opencart.git"
+      "url":"git@github.com:CyberFoxDigital/cf-bootstrap.git"
    },
    "bugs":{  
-      "url":"https://github.com/mediaorb/mo-opencart/issues"
+      "url":"hhttps://github.com/CyberFoxDigital/cf-bootstrap/issues"
    },
    "scripts":{  
       "build":"bower install && gulp",
