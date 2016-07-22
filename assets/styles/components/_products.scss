@@ -73,7 +73,6 @@
 	}
 	.view-product {
 		margin: 0 ($grid-gutter-width / 2) $line-height-computed;
-		border-radius: 0;
 	}
 }
 
@@ -171,6 +170,7 @@
 	}
 	.fa-star-o {
 		color: $brand-primary;
+
 		font-size: 15px;
 	} 
 	.fa-star {
@@ -179,6 +179,9 @@
 		+ .fa-star-o {
 			color: $brand-primary;
 		}
+	}
+	&.no-reviews {
+		.fa { color: $gray-light; }
 	}
 }
 body[class*="product-category"] {
