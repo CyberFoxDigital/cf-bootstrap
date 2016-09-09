@@ -6,17 +6,17 @@
   ],
   "private": true,
   "dependencies": {
-    "modernizr": "~3.1.0",
-    "bootstrap-sass-official": "3.3.5",
-    "font-awesome": "~4.4.0"
+    "modernizr": "^3.1.0",
+    "bootstrap-sass-official": "^3.3.5",
+    "font-awesome": "^4.4.0",
+    "OwlCarousel2": "^2.1.6",
+    "Stickyfill": "~1.1.4"
   },
   "overrides": {
     "bootstrap-sass-official": {
       "main": [
         "./assets/stylesheets/bootstrap/_variables.scss",
         "./assets/stylesheets/bootstrap/_mixins.scss",
-
-
         "./assets/stylesheets/bootstrap/mixins/_hide-text.scss",
         "./assets/stylesheets/bootstrap/mixins/_opacity.scss",
         "./assets/stylesheets/bootstrap/mixins/_image.scss",
@@ -30,7 +30,6 @@
         "./assets/stylesheets/bootstrap/mixins/_text-emphasis.scss",
         "./assets/stylesheets/bootstrap/mixins/_text-overflow.scss",
         "./assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss",
-
         "./assets/stylesheets/bootstrap/mixins/_alerts.scss",
         "./assets/stylesheets/bootstrap/mixins/_buttons.scss",
         "./assets/stylesheets/bootstrap/mixins/_panels.scss",
@@ -40,17 +39,14 @@
         "./assets/stylesheets/bootstrap/mixins/_forms.scss",
         "./assets/stylesheets/bootstrap/mixins/_progress-bar.scss",
         "./assets/stylesheets/bootstrap/mixins/_table-row.scss",
-
         "./assets/stylesheets/bootstrap/mixins/_background-variant.scss",
         "./assets/stylesheets/bootstrap/mixins/_border-radius.scss",
         "./assets/stylesheets/bootstrap/mixins/_gradients.scss",
-
         "./assets/stylesheets/bootstrap/mixins/_clearfix.scss",
         "./assets/stylesheets/bootstrap/mixins/_center-block.scss",
         "./assets/stylesheets/bootstrap/mixins/_nav-vertical-align.scss",
         "./assets/stylesheets/bootstrap/mixins/_grid-framework.scss",
         "./assets/stylesheets/bootstrap/mixins/_grid.scss",
-
         "./assets/stylesheets/bootstrap/_normalize.scss",
         "./assets/stylesheets/bootstrap/_print.scss",
         "./assets/stylesheets/bootstrap/_glyphicons.scss",
@@ -82,15 +78,12 @@
         "./assets/stylesheets/bootstrap/_responsive-embed.scss",
         "./assets/stylesheets/bootstrap/_wells.scss",
         "./assets/stylesheets/bootstrap/_close.scss",
-        
         "./assets/stylesheets/bootstrap/_modals.scss",
         "./assets/stylesheets/bootstrap/_tooltip.scss",
         "./assets/stylesheets/bootstrap/_popovers.scss",
         "./assets/stylesheets/bootstrap/_carousel.scss",
-        
         "./assets/stylesheets/bootstrap/_utilities.scss",
         "./assets/stylesheets/bootstrap/_responsive-utilities.scss",
-        
         "./assets/javascripts/bootstrap/transition.js",
         "./assets/javascripts/bootstrap/alert.js",
         "./assets/javascripts/bootstrap/button.js",
@@ -103,7 +96,6 @@
         "./assets/javascripts/bootstrap/scrollspy.js",
         "./assets/javascripts/bootstrap/tab.js",
         "./assets/javascripts/bootstrap/affix.js",
-        
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
@@ -128,6 +120,12 @@
         "./src/scss/owl.carousel.scss",
         "./dist/assets/ajax-loader.gif",
         "./dist/assets/owl.video.play.png"
+      ]
+    },
+    "bootstrap-datetimepicker": {
+      "main": [
+        "./build/css/bootstrap-datetimepicker.min.css",
+        "./build/js/bootstrap-datetimepicker.min.js"
       ]
     }
   }

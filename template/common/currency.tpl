@@ -1,7 +1,7 @@
 <?php if (count($currencies) > 1) { ?>
 <li>
 <form class="dropdown" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-currency">
-  <button class="btn btn-sm btn-link dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
     <?php foreach ($currencies as $currency) { ?>
     <?php if ($currency['code'] == $code) { ?>
     <?php echo $currency['code']; ?>    

@@ -27,6 +27,12 @@ img[style*="float:left"],
 }
 
 @media (min-width: $screen-sm-min) { 
+	.csspositionsticky {
+		.sticky {
+		  position: sticky;
+		  top: $line-height-computed;
+		}
+	}
 	.sm-text-right {
 		text-align:right;
 	}

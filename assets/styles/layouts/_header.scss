@@ -50,6 +50,15 @@ header {
 	}
 
 	.nav-wrapper {
+		.navbar.navbar-full {
+			border-radius: 0;
+			border-left: 0;
+			border-right: 0;
+		}
+		.navbar-toggle > .fa {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
 		.navbar-nav {
 			@media(min-width: $grid-float-breakpoint) {
 				.flexbox & {
@@ -95,6 +104,22 @@ header {
 	}
 }
 
+.cart-wrapper {
+	> ul {
+		@media (max-width: $screen-xs-max) {
+			width: 100%;
+			li {
+				width: 100%;
+				display: block;
+				float: none;
+				.dropdown-menu {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
 #cart {
 	text-align: center;
 	@media(min-width: $grid-float-breakpoint) {
@@ -117,9 +142,13 @@ header {
 	}
 	.dropdown-menu {
 		z-index: 1001;
-		min-width: 100%;
+		min-width: 16em;
+		@media(max-width: $screen-xs-max) {
+			max-width: 100%;
+		}
 		table {
 			margin-bottom: 10px;
+			td { vertical-align: middle; }
 		}
 		li {
 			> div {

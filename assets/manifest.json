@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "main.js": {
+      "bower": ["bootstrap-sass-official"],
       "files": [
         "scripts/main.js",
         "scripts/common.js"
@@ -20,6 +21,17 @@
     },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "owl.carousel.js": {
+      "bower": ["OwlCarousel2"],
+      "files": [
+        "dist/owl.carousel.js"
+      ],
+      "main" : true
+    },
+    "polyfill-sticky.js": {
+      "bower": ["Stickyfill"],
+      "main" : true
     },
     "font-awesome.css": {
       "bower": ["font-awesome"],

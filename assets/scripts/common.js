@@ -89,8 +89,7 @@ $(document).ready(function() {
 	$('#list-view').click(function() {
 		$('#content .product-grid > .clearfix').remove();
 
-		//$('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
-		$('#content .row > .product-grid').attr('class', 'product-layout product-list col-xs-12');
+		$('#content .row > .product-grid').attr('class', 'product-layout product-list');
 
 		localStorage.setItem('display', 'list');
 	});
@@ -101,11 +100,11 @@ $(document).ready(function() {
 		var cols = $('#column-right, #column-left').length;
 
 		if (cols === 2) {
-			$('#content .product-list').attr('class', 'product-layout product-grid col-lg-6 col-md-6 col-sm-12 col-xs-12');
+			$('#content .product-list').attr('class', 'product-layout product-grid');
 		} else if (cols === 1) {
-			$('#content .product-list').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12');
+			$('#content .product-list').attr('class', 'product-layout product-grid');
 		} else {
-			$('#content .product-list').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12');
+			$('#content .product-list').attr('class', 'product-layout product-grid');
 		}
 
 		 localStorage.setItem('display', 'grid');
@@ -155,12 +154,30 @@ var cart = {
 				}
 
 				if (json.success) {
-					$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json.success + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
+					
+					if($('#genericModal').length){
+						$('#genericModal').find('.modal-title').html(json.success);
+						$('#genericModal').find('.modal-body').html('<ul class="cart list-unstyled"></ul>');
+						$('#genericModal').find('.modal-body .cart').load('index.php?route=common/cart/info .dropdown-menu > li', function(){
+							if(!$('.modal').find('.modal-footer').length){
+								$('#genericModal').find('.modal-body').after('<div class="modal-footer"></div>');
+							}
+							$('#genericModal').find('.modal-footer').html($('#genericModal').find('.modal-body .cart > li:last-child .row').html());
+							$('#genericModal').find('.modal-body .cart >li:last-child .row').remove();
+							$('#genericModal').modal('show');
+						});
+						
+					} else {
+						$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json.success + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					}
 					// Need to set timeout otherwise it wont update the total
 					setTimeout(function () {
 						$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json.total + '</span>');
 					}, 100);
+					
+					$('.cart-total-price').html(json.total_price);
+					
+					$('.cart-total-items').html(json.total_items);
 
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
 

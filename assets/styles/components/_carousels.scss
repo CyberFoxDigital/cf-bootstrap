@@ -1,37 +1,39 @@
 // Carousels
-.carousel-caption {
-	color: #FFFFFF;
-	text-shadow: 0 1px 0 #000000;
-}
-.carousel-control .icon-prev:before {
-	content: '\f053';
-	font-family: FontAwesome;
-}
-.carousel-control .icon-next:before {
-	content: '\f054';
-	font-family: FontAwesome;
-}
 .owl-carousel {
-	.owl-wrapper-outer {
-		padding: 0;
-		box-shadow: none;
-		border-radius: 0;
+	.item {
+		padding: 0 $grid-gutter-width / 2;
 	}
-	.owl-next,
+	.owl-prev,
+	.owl-next {
+		position: absolute;
+		top: 50%;
+		margin-top: -($padding-base-vertical + 11px);
+	}
 	.owl-prev {
-		@extend .btn;
-		@extend .btn-inverse;
-		transform: translateY(-50%);
-		> i {
-			width: 1em;
-			height: 1em;
-			font-size: inherit !important;
-			color: #fff !important;
-			margin: 0 !important;
+		left: $grid-gutter-width / 2;
+		@media (min-width: $screen-sm-min) {
+			.csscalc &{
+				left:auto;
+				right: calc(100% + #{$grid-gutter-width / 2});
+			}
+		}
+	}
+	.owl-next {
+		right: $grid-gutter-width / 2;
+		@media (min-width: $screen-sm-min) {
+			.csscalc &{
+				right:auto;
+				left: calc(100% + #{$grid-gutter-width / 2});
+			}
 		}
 	}
 }
 
-.owl-pagination {
-	display: none;
+.csscalc .full-width .owl-next {
+		right: #{$grid-gutter-width / 2} !important; left: auto !important;
+}
+
+.csscalc .full-width .owl-prev {
+		left: #{$grid-gutter-width / 2} !important; right: auto !important;
+	
 }

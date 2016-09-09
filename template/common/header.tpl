@@ -1,4 +1,63 @@
-<!DOCTYPE html>
+<?php
+class JsonManifest {
+  private $manifest;
+
+  public function __construct($manifest_path) {
+    if (file_exists($manifest_path)) {
+      $this->manifest = json_decode(file_get_contents($manifest_path), true);
+    } else {
+      $this->manifest = [];
+    }
+  }
+
+  public function get() {
+    return $this->manifest;
+  }
+
+  public function getPath($key = '', $default = null) {
+    $collection = $this->manifest;
+    if (is_null($key)) {
+      return $collection;
+    }
+    if (isset($collection[$key])) {
+      return $collection[$key];
+    }
+    foreach (explode('.', $key) as $segment) {
+      if (!isset($collection[$segment])) {
+        return $default;
+      } else {
+        $collection = $collection[$segment];
+      }
+    }
+    return $collection;
+  }
+}
+
+function asset_path($filename) {
+  $dist_path = 'catalog/view/theme/cf-opencart/dist/';
+  $directory = dirname($filename) . '/';
+  $file = basename($filename);
+  static $manifest;
+
+  if (empty($manifest)) {
+    $manifest_path = 'catalog/view/theme/cf-opencart/dist/assets.json';
+    $manifest = new JsonManifest($manifest_path);
+  }
+
+  if (array_key_exists($file, $manifest->get())) {
+    return $dist_path . $directory . $manifest->get()[$file];
+  } else {
+    return $dist_path . $directory . $file;
+  }
+}
+
+if(!empty(explode("-", $class)[1]) && explode("-", $class)[1] != 'product') {
+ $class .= " " . explode("-", $class)[1];
+} elseif(!empty(explode("-", $class)[0])){
+ $class .= " " . explode("-", $class)[0];
+} 
+
+?><!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if IE 8 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
 <!--[if IE 9 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
@@ -8,6 +67,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="MobileOptimized" content="320">
+  <meta name="HandheldFriendly" content="True">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php echo $title; ?></title>
   <base href="<?php echo $base; ?>" />
@@ -17,11 +78,12 @@
   <?php if ($keywords) { ?>
   <meta name="keywords" content= "<?php echo $keywords; ?>" />
   <?php } ?>
-  <script src="catalog/view/theme/cf-opencart/dist/scripts/modernizr.js" type="text/javascript"></script>
-  <script src="catalog/view/theme/cf-opencart/dist/scripts/jquery.js" type="text/javascript"></script>
-  <script src="catalog/view/theme/cf-opencart/dist/scripts/main.js" type="text/javascript"></script>
-  <link href="catalog/view/theme/cf-opencart/dist/styles/main.css" rel="stylesheet" type="text/css" media="screen, projection" />
-  <link href="catalog/view/theme/cf-opencart/dist/styles/font-awesome.css" rel="stylesheet" type="text/css" />
+  <script src="<?php echo asset_path('scripts/modernizr.js');?>" type="text/javascript"></script>
+  <script src="<?php echo asset_path('scripts/jquery.js')?>" type="text/javascript"></script>
+  <script>var asset_path = 'catalog/view/theme/cf-opencart/dist/';</script>
+  <script src="<?php echo asset_path('scripts/main.js')?>" type="text/javascript"></script>
+  <link href="<?php echo asset_path('styles/main.css')?>" rel="stylesheet" type="text/css" media="screen, projection" />
+  <link href="<?php echo asset_path('styles/font-awesome.css')?>" rel="stylesheet" type="text/css" />
   <?php foreach ($styles as $style) { ?>
   <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
   <?php } ?>
@@ -34,6 +96,8 @@
   <?php foreach ($analytics as $analytic) { ?>
   <?php echo $analytic; ?>
   <?php } ?>
+  <script src="https://use.typekit.net/cgx3pfl.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body class="<?php echo $class; ?>">
 <header>
@@ -62,8 +126,8 @@
               <?php } ?>
             </ul>
           </li>
-          <li><a class="btn btn-sm btn-link" href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_wishlist; ?></span></a></li>
-          <li><a class="btn btn-sm btn-link" href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
+          <li class="hidden-xs"><a class="btn btn-sm btn-link" href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo preg_replace('/(.*?)\((.*)\)/', '$1 <span class="badge">$2</span>', $text_wishlist) ; ?></span></a></li>
+          <li><a class="btn btn-sm btn-link" href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span> <span class="badge cart-total-items"><?php echo $cart_items; ?></span></a></li>
           <li><a class="btn btn-sm btn-link" href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
         </ul>
       </div>
@@ -72,7 +136,7 @@
   <div class="middle-wrapper">
     <div class="container">
       <div class="row">
-        <div class="logo-wrapper col-sm-4 col-md-3">
+        <div class="logo-wrapper col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 col-md-4">
           <div id="logo">
             <?php if ($logo) { ?>
             <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
@@ -81,54 +145,55 @@
             <?php } ?>
           </div>
         </div>
-        <div class="search-wrapper col-sm-5 col-md-4 col-md-offset-1 text-center">
+        <div class="search-wrapper col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-5 col-md-4 text-center">
           <?php echo $search; ?>
         </div>
-        <div class="cart-wrapper col-sm-3 col-md-offset-1 text-center">
-          <?php echo $cart; ?>
+        <div class="cart-wrapper hidden-xs col-sm-3 col-md-4 text-center sm-text-right">
+        	<ul class="list-unstyled">
+        	<li><?php echo $cart; ?></li>
+        	</ul>
+          
         </div>
       </div>
     </div>
   </div>
 	<?php if ($categories) { ?>
 	<div class="nav-wrapper">
-  	<div class="container">
-      <nav id="menu" class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-          	<div class="navbar-brand visible-xs">
-            	<?php echo $text_category; ?>
-            </div>
-            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+    <nav id="menu" class="navbar navbar-default navbar-full">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand visible-xs visible-sm">
+            <?php echo $text_category; ?>
           </div>
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-              <?php foreach ($categories as $category) { ?>
-              <?php if ($category['children']) { ?>
-              <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?> <span class="caret"></span></a>
-                <div class="dropdown-menu">
-                  <div class="dropdown-inner<?php echo $category['column'] > 1 ? ' has-columns' : ' no-columns'?>">
-                    <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-                    <ul class="nav">
-                      <?php foreach ($children as $child) { ?>
-                      <?php $child['name'] = preg_replace('/\((.*?)\)/s', '<span class="badge">$1</span>', $child['name']); ?>
-                      <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                      <?php } ?>
-                    </ul>
-                    <?php } ?> 
-                  </div>
-                  <a href="<?php echo $category['href']; ?>" class="see-all btn btn-primary btn-block"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
-                </div>
-              </li>
-              <?php } else { ?>
-              <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-              <?php } ?>
-              <?php } ?>
-            </ul>
-          </div>
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
         </div>
-      </nav>
-    </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <?php foreach ($categories as $category) { ?>
+            <?php if ($category['children']) { ?>
+            <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo str_replace('and', '&amp;', $category['name']); ?> <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <div class="dropdown-inner<?php echo $category['column'] > 1 ? ' has-columns' : ' no-columns'?>">
+                  <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                  <ul class="nav">
+                    <?php foreach ($children as $child) { ?>
+                    <?php $child['name'] = preg_replace('/\((.*?)\)/s', '<span class="badge">$1</span>', $child['name']); ?>
+                    <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <?php } ?> 
+                </div>
+                <a href="<?php echo $category['href']; ?>" class="see-all btn btn-sm btn-primary btn-block"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
+              </div>
+            </li>
+            <?php } else { ?>
+            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <?php } ?>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	</div>
 	<?php } ?>
 </header>

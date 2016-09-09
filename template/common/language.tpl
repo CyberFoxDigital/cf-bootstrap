@@ -1,7 +1,7 @@
 <?php if (count($languages) > 1) { ?>
 <li>
 <form action="<?php echo $action; ?>" class="dropdown" method="post" enctype="multipart/form-data" id="form-language">
-  <button class="btn btn-sm btn-link dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
     <?php foreach ($languages as $language) { ?>
     <?php if ($language['code'] == $code) { ?>
     <img src="catalog/language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" alt="<?php echo $language['name']; ?>" title="<?php echo $language['name']; ?>">

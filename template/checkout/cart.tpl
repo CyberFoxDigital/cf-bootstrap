@@ -20,6 +20,13 @@
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
+  <div class="page-header">
+    <h1><?php echo $heading_title; ?>
+      <?php if ($weight && substr($weight,0,4) != '0.00') { ?>
+      &nbsp;(<?php echo $weight; ?>)
+      <?php } ?>
+    </h1>
+  </div>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -29,28 +36,25 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h1><?php echo $heading_title; ?>
-        <?php if ($weight) { ?>
-        &nbsp;(<?php echo $weight; ?>)
-        <?php } ?>
-      </h1>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
-                <td class="text-center"><?php echo $column_image; ?></td>
-                <td class="text-left"><?php echo $column_name; ?></td>
-                <td class="text-left"><?php echo $column_model; ?></td>
-                <td class="text-left"><?php echo $column_quantity; ?></td>
-                <td class="text-right"><?php echo $column_price; ?></td>
-                <td class="text-right"><?php echo $column_total; ?></td>
+              	<th>&nbsp;</td>
+                <th class="text-center hidden-xs"><?php echo $column_image; ?></th>
+                <th class="text-left"><?php echo $column_name; ?></th>
+                <th class="text-left hidden-xs"><?php echo $column_model; ?></th>
+                <th class="text-left"><?php echo $column_quantity; ?></th>
+                <th class="text-right"><?php echo str_replace('Unit', '<span class="hidden-xs">Unit</span>', $column_price); ?></th>
+                <th class="text-right"><?php echo $column_total; ?></th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($products as $product) { ?>
               <tr>
-                <td class="text-center"><?php if ($product['thumb']) { ?>
+              	<td><a href="#" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="text-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></a></td>
+                <td class="text-center hidden-xs"><?php if ($product['thumb']) { ?>
                   <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
                   <?php } ?></td>
                 <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
@@ -71,13 +75,14 @@
                   <br />
                   <span class="label label-info"><?php echo $text_recurring_item; ?></span> <small><?php echo $product['recurring']; ?></small>
                   <?php } ?></td>
-                <td class="text-left"><?php echo $product['model']; ?></td>
-                <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                    <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" />
-                    <span class="input-group-btn">
-                    <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                    <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></button>
-                    </span></div></td>
+                <td class="text-left hidden-xs "><?php echo $product['model']; ?></td>
+                <td class="text-left">
+                  <div class="input-group input-group-sm plus-minus" style="max-width: 200px;">
+                    <span class="input-group-btn"><button class="btn btn-default minus" type="button"><i class="fa fa-minus"></i></button></span>
+                    <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" data-cart-id="<?php echo $product['cart_id'];?>" value="<?php echo $product['quantity']; ?>" size="1" id="input-quantity" class="form-control" />
+                    <span class="input-group-btn"><button class="btn btn-default plus" type="button"><i class="fa fa-plus"></i></button></span>
+                  </div>
+                </td>
                 <td class="text-right"><?php echo $product['price']; ?></td>
                 <td class="text-right"><?php echo $product['total']; ?></td>
               </tr>
@@ -101,7 +106,7 @@
         </div>
       </form>
       <?php if ($modules) { ?>
-      <h2><?php echo $text_next; ?></h2>
+      <h3><?php echo $text_next; ?></h3>
       <p><?php echo $text_next_choice; ?></p>
       <div class="panel-group" id="accordion">
         <?php foreach ($modules as $module) { ?>
@@ -112,7 +117,7 @@
       <br />
       <div class="row">
         <div class="col-sm-4 col-sm-offset-8">
-          <table class="table table-bordered">
+          <table class="table totals table-bordered">
             <?php foreach ($totals as $total) { ?>
             <tr>
               <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
