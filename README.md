@@ -1,4 +1,14 @@
-#Opencart 2 Boilerplate Starter Theme v.0.1a
+#Opencart 2.3 Gulp + Bower Boilerplate Starter Theme v.0.2a
+
+Please be aware this is a work in progress and if you intend to use it it is best to get in touch with us so we can discuss working on it together
+
+If you would like to find out more about us please visit [the Cyber Fox website](https://cyberfoxdigital.co.uk/).
+
+Objectives
+----------
+- To create a modern development environment in OpenCart
+- To improve the performance and pagespeed by concenating CSS and Javascript into central files, and away from template files
+- To add useful new features to improve OpenCart's usability and conversion rates
 
 Initialising the Files
 ----------------------
