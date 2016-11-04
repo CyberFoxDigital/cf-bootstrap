@@ -10,6 +10,10 @@ Objectives
 - To improve the performance and pagespeed by concenating CSS and Javascript into central files, and away from template files
 - To add useful new features to improve OpenCart's usability and conversion rates
 
+Install
+-------
+Follow standard OpenCart theme installation, making sure to install cf_oc2_theme_mods.ocmod.xml via the Extensions Installer.
+
 Initialising the Files
 ----------------------
 To begin using this theme you will need to SSH into your server and navigate to the theme directory. You will then need to install NPM, Bower and run Gulp for the first time. 
